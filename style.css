@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fitness Marketplace</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .container {
+      padding: 20px;
+    }
+    .section {
+      margin-bottom: 30px;
+    }
+    .section h2 {
+      color: #333;
+    }
+    .product-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .product-card {
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      width: calc(25% - 20px);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.2s ease-in-out;
+    }
+    .product-card:hover {
+      transform: scale(1.02);
+    }
+    .product-image img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .product-details {
+      padding: 10px;
+    }
+    .product-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 0;
+    }
+    .product-price {
+      color: #4CAF50;
+      font-size: 16px;
+    }
+    .product-actions {
+      margin-top: 10px;
+    }
+    .btn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+    }
+    .btn:hover {
+      background-color: #45a049;
+    }
+    .filters, .categories {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .filters select, .categories select {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      margin-top: 30px;
+    }
+    .video-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .video-card {
+      width: calc(50% - 20px);
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .video-card video {
+      width: 100%;
+      display: block;
+    }
+    .video-title {
+      padding: 10px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Fitness Marketplace</h1>
+</header>
+
+<div class="container">
+  <!-- Categories Section -->
+  <div class="section">
+    <h2>Categories</h2>
+    <div class="categories">
+      <select id="categoryFilter">
+        <option value="all">All Categories</option>
+        <option value="equipment">Fitness Equipment</option>
+        <option value="apparel">Apparel & Accessories</option>
+        <option value="nutrition">Nutrition & Supplements</option>
+        <option value="digital">Digital Products</option>
+        <option value="recovery">Recovery Tools</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Filters Section -->
+  <div class="section">
+    <h2>Filters</h2>
+    <div class="filters">
+      <select id="priceFilter">
+        <option value="all">All Prices</option>
+        <option value="low">Under $50</option>
+        <option value="mid">$50 - $100</option>
+        <option value="high">Over $100</option>
+      </select>
+      <select id="ratingFilter">
+        <option value="all">All Ratings</option>
+        <option value="4">4+ Stars</option>
+        <option value="3">3+ Stars</option>
+        <option value="2">2+ Stars</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Product Listings -->
+  <div class="section">
+    <h2>Product Listings</h2>
+    <div class="product-grid" id="productGrid">
+      <!-- Example Product Card -->
+      <div class="product-card" data-category="equipment" data-price="mid" data-rating="4">
+        <div class="product-image">
+          <img src="dumbbell.jpg" alt="Dumbbell Set">
+        </div>
+        <div class="product-details">
+          <p class="product-title">Dumbbell Set</p>
+          <p class="product-price">$80</p>
+          <div class="product-actions">
+            <a href="#" class="btn">Add to Cart</a>
+            <a href="#" class="btn">View Details</a>
+          </div>
+        </div>
+      </div>
+      <!-- Add more product cards here -->
+    </div>
+  </div>
+
+  <!-- Featured Videos Section -->
+  <div class="section">
+    <h2>Featured Videos</h2>
+    <div class="video-container">
+      <div class="video-card">
+        <video controls>
+          <source src="promo-video.mp4" type="video/mp4">
+          Your browser does not support the video element.
+        </video>
+        <p class="video-title">Welcome to the Fitness Marketplace</p>
+      </div>
+      <div class="video-card">
+        <video controls>
+          <source src="fitness-tips.mp4" type="video/mp4">
+          Your browser does not support the video element.
+        </video>
+        <p class="video-title">Top 5 Fitness Tips for Beginners</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2024 Fitness Marketplace. All Rights Reserved.</p>
+</footer>
+
+<script>
+  // Filters functionality
+  const categoryFilter = document.getElementById('categoryFilter');
+  const priceFilter = document.getElementById('priceFilter');
+  const ratingFilter = document.getElementById('ratingFilter');
+  const productGrid = document.getElementById('productGrid');
+
+  function applyFilters() {
+    const category = categoryFilter.value;
+    const price = priceFilter.value;
+    const rating = parseInt(ratingFilter.value) || 0;
+
+    document.querySelectorAll('.product-card').forEach(card => {
+      const productCategory = card.dataset.category;
+      const productPrice = card.dataset.price;
+      const productRating = parseInt(card.dataset.rating);
+
+      const matchesCategory = category === 'all' || productCategory === category;
+      const matchesPrice =
+        price === 'all' ||
+        (price === 'low' && productPrice === 'low') ||
+        (price === 'mid' && productPrice === 'mid') ||
+        (price === 'high' && productPrice === 'high');
+      const matchesRating = rating === 0 || productRating >= rating;
+
+      if (matchesCategory && matchesPrice && matchesRating) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  categoryFilter.addEventListener('change', applyFilters);
+  priceFilter.addEventListener('change', applyFilters);
+  ratingFilter.addEventListener('change', applyFilters);
+</script>
+
+</body>
+</html>

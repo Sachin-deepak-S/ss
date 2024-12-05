@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All in One Fitness App</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Additional styles */
+        .section {
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            margin-bottom: 10px;
+        }
+        .btn {
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .link-button {
+            background: none;
+            color: #007bff;
+            border: none;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        .link-button:hover {
+            text-decoration: none;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+        #feedback {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>All in One Fitness App</h1>
+    </header>
+
+    <main class="main-content">
+        <!-- Login/Register Section -->
+        <section id="login-page" class="form-section">
+            <h2>Welcome Back</h2>
+            <form id="loginForm" class="form">
+                <label for="loginEmail">Email:</label>
+                <input type="email" id="loginEmail" placeholder="Enter your email" required>
+                <label for="loginPassword">Password:</label>
+                <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                <button type="submit" class="btn">Login</button>
+            </form>
+            <p>Don't have an account? <button id="registerSwitch" class="link-button">Register Here</button></p>
+
+            <form id="registerForm" class="form" style="display: none;">
+                <h3>Create an Account</h3>
+                <label for="registerEmail">Email:</label>
+                <input type="email" id="registerEmail" placeholder="Enter your email" required>
+                <label for="registerPassword">Password:</label>
+                <input type="password" id="registerPassword" placeholder="Enter your password" required>
+                <button type="submit" class="btn">Register</button>
+            </form>
+        </section>
+
+        <!-- Profile Setup Section -->
+        <section id="profile-setup" class="form-section" style="display: none;">
+            <h2>Set Up Your Profile</h2>
+            <form id="profileForm" class="form">
+                <label for="age">Age:</label>
+                <input type="number" id="age" placeholder="Enter your age" required>
+                <label for="gender">Gender:</label>
+                <select id="gender" required>
+                    <option value="" disabled selected>Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+                <label for="height">Height (cm):</label>
+                <input type="number" id="height" placeholder="Enter your height" required>
+                <label for="weight">Weight (kg):</label>
+                <input type="number" id="weight" placeholder="Enter your weight" required>
+                <button type="submit" class="btn">Save Profile</button>
+            </form>
+        </section>
+
+        <!-- Main Features Section -->
+        <section id="main-features" class="feature-section" style="display: none;">
+            <h2>Welcome to Your Fitness Hub</h2>
+            <div class="features-container">
+                <button onclick="showWorkoutCustomization()" class="btn">Workout Customization</button>
+                <button onclick="showMealPlanning()" class="btn">Meal Planning</button>
+                <button onclick="showVirtualCoaching()" class="btn">Virtual Coaching</button>
+               <!-- Main Features Section -->
+<section id="main-features" class="feature-section" style="display: none;">
+    <h2>Welcome to Your Fitness Hub</h2>
+    <div class="features-container">
+        <button onclick="showWorkoutCustomization()" class="btn">Workout Customization</button>
+        <button onclick="showMealPlanning()" class="btn">Meal Planning</button>
+        <button onclick="showVirtualCoaching()" class="btn">Virtual Coaching</button>
+        <button onclick="showChallenges()" class="btn">Challenges</button>
+        <button onclick="showAnalytics()" class="btn">Analytics Dashboard</button>
+        <button onclick="showMeditation()" class="btn">Meditation & Recovery</button>
+        <button onclick="showMarketplace()" class="btn">Marketplace</button>
+    </div>
+</section>
+
+<!-- Fitness Challenges Section -->
+<section id="fitness-challenges" class="form-section" style="display: none;">
+    <h1>Fitness Challenges</h1>
+
+    <!-- Challenge Discovery -->
+    <div class="section">
+        <h2>Discover Challenges</h2>
+        <label for="challengeCategory">Category:</label>
+        <select id="challengeCategory">
+            <option value="Weight Loss">Weight Loss</option>
+            <option value="Endurance">Endurance</option>
+            <option value="Strength">Strength</option>
+        </select>
+        <br><br>
+        <label for="challengeDifficulty">Difficulty:</label>
+        <select id="challengeDifficulty">
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+        </select>
+        <br><br>
+        <button class="btn" onclick="discoverChallenges()">Find Challenges</button>
+        <p id="discoveredChallenges"></p>
+    </div>
+
+    <!-- Challenge Participation -->
+    <div class="section">
+        <h2>Join a Challenge</h2>
+        <p>Select a challenge from the list to join:</p>
+        <button class="btn" onclick="joinChallenge()">Join Challenge</button>
+        <p id="challengeDetails"></p>
+    </div>
+
+    <!-- Tracking Progress -->
+    <div class="section">
+        <h2>Track Your Progress</h2>
+        <button class="btn" onclick="logProgress()">Log Daily Progress</button>
+        <p id="progressStatus"></p>
+        <div class="leaderboard">
+            <h3>Leaderboard</h3>
+            <p id="leaderboardStatus">1. User A - 90 points<br>2. User B - 80 points<br>3. You - 70 points</p>
+        </div>
+    </div>
+
+    <!-- Community Interaction -->
+    <div class="section">
+        <h2>Community</h2>
+        <div class="community-section">
+            <h3>Discussion</h3>
+            <div id="communityComments">
+                <p>User A: "Let’s keep going, everyone!"</p>
+                <p>User B: "Great effort, team!"</p>
+            </div>
+            <div class="comment-box">
+                <input type="text" id="userComment" placeholder="Write your comment..." />
+                <button class="btn" onclick="addComment()">Post</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rewards and Recognition -->
+    <div class="section">
+        <h2>Rewards and Recognition</h2>
+        <button class="btn" onclick="viewRewards()">View Your Rewards</button>
+        <div id="rewards">
+            <p>Badges Earned:</p>
+            <span class="badge" style="display: none;" id="rewardBadge">Challenge Finisher</span>
+        </div>
+    </div>
+    <button class="btn" onclick="backToMain()">Back to Main Features</button>
+</section>
+
+                <button onclick="showAnalytics()" class="btn">Analytics Dashboard</button>
+                <button onclick="showMeditation()" class="btn">Meditation & Recovery</button>
+                <button onclick="showMarketplace()" class="btn">Marketplace</button>
+            </div>
+        </section>
+
+        <!-- Meal Planning Section -->
+        <section id="meal-planning" class="form-section" style="display: none;">
+            <h2>Meal Planning</h2>
+            <div class="section">
+                <h3>Select Your Dietary Preferences</h3>
+                <label for="mealGoal">Meal Goal:</label>
+                <select id="mealGoal">
+                    <option value="Weight Loss">Weight Loss</option>
+                    <option value="Muscle Gain">Muscle Gain</option>
+                    <option value="Maintain">Maintain Weight</option>
+                </select>
+                <br><br>
+                <label for="dietaryRestrictions">Dietary Restrictions:</label>
+                <select id="dietaryRestrictions">
+                    <option value="None">None</option>
+                    <option value="Vegetarian">Vegetarian</option>
+                    <option value="Vegan">Vegan</option>
+                    <option value="Gluten-Free">Gluten-Free</option>
+                    <option value="Dairy-Free">Dairy-Free</option>
+                </select>
+                <br><br>
+                <button class="btn" onclick="generateMealPlan()">Generate Meal Plan</button>
+            </div>
+
+            <div class="section">
+                <h3>Your Personalized Meal Plan</h3>
+                <p id="mealPlan"></p>
+            </div>
+
+            <button class="btn" onclick="backToMain()">Back to Main Features</button>
+        </section>
+
+        <!-- Workout Customization Section -->
+        <section id="workout-customization" class="form-section" style="display: none;">
+            <h2>Workout Customization</h2>
+            <div class="section">
+                <h3>Workout Preferences</h3>
+                <label for="workoutGoal">Workout Goal:</label>
+                <select id="workoutGoal">
+                    <option value="Weight Loss">Weight Loss</option>
+                    <option value="Muscle Gain">Muscle Gain</option>
+                    <option value="Endurance">Endurance</option>
+                </select>
+                <br><br>
+                <label for="workoutLevel">Fitness Level:</label>
+                <select id="workoutLevel">
+                    <option value="Beginner">Beginner</option>
+                    <option value="Intermediate">Intermediate</option>
+                    <option value="Advanced">Advanced</option>
+                </select>
+                <br><br>
+                <label for="workoutEquipment">Available Equipment:</label>
+                <select id="workoutEquipment">
+                    <option value="None">None</option>
+                    <option value="Basic">Basic (e.g., Dumbbells)</option>
+                    <option value="Full Gym">Full Gym</option>
+                </select>
+                <br><br>
+                <button class="btn" onclick="generateWorkoutPlan()">Generate Workout Plan</button>
+            </div>
+
+            <div class="section">
+                <h3>Your Personalized Workout Plan</h3>
+                <p id="workoutPlan"></p>
+            </div>
+
+            <button class="btn" onclick="backToMain()">Back to Main Features</button>
+        </section>
+
+        <!-- Virtual Coaching Section -->
+        <section id="virtual-coaching" class="form-section" style="display: none;">
+            <h2>Virtual Fitness Coach</h2>
+            <div class="section">
+                <h3>Setup Your Fitness Profile</h3>
+                <label for="fitnessGoal">Fitness Goal:</label>
+                <select id="fitnessGoal">
+                    <option value="Weight Loss">Weight Loss</option>
+                    <option value="Muscle Gain">Muscle Gain</option>
+                    <option value="Endurance">Endurance</option>
+                </select>
+                <br><br>
+                <label for="fitnessLevel">Fitness Level:</label>
+                <select id="fitnessLevel">
+                    <option value="Beginner">Beginner</option>
+                    <option value="Intermediate">Intermediate</option>
+                    <option value="Advanced">Advanced</option>
+                </select>
+                <br><br>
+                <label for="equipment">Available Equipment:</label>
+                <select id="equipment">
+                    <option value="None">None</option>
+                    <option value="Basic">Basic (e.g., Dumbbells)</option>
+                    <option value="Full Gym">Full Gym</option>
+                </select>
+                <br><br>
+                <button class="btn" onclick="generatePlan()">Generate Plan</button>
+            </div>
+
+            <div class="section">
+                <h3>Your Personalized Workout Plan</h3>
+                <p id="workoutPlan"></p>
+            </div>
+
+            <div class="section">
+                <h3>Workout Session</h3>
+                <button class="btn" onclick="completeWorkout()">Complete Workout</button>
+                <p id="feedback"></p>
+            </div>
+
+            <button class="btn" onclick="backToMain()">Back to Main Features</button>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>&copy; </p>
+    </footer>
+
+    <script>
+        let userProfile = {};
+
+        // Login / Register Toggle
+        document.getElementById('registerSwitch').addEventListener('click', () => {
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('registerForm').style.display = 'block';
+        });
+
+        // Handle Register
+        document.getElementById('registerForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('registerEmail').value;
+            const password = document.getElementById('registerPassword').value;
+
+            // Register the user (Add more logic here if needed)
+            userProfile.email = email;
+
+            // Show profile setup
+            document.getElementById('registerForm').style.display = 'none';
+            document.getElementById('profile-setup').style.display = 'block';
+        });
+
+        // Handle Login
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+
+            // Check login credentials (Add more logic here if needed)
+            if (email === userProfile.email) {
+                document.getElementById('login-page').style.display = 'none';
+                document.getElementById('main-features').style.display = 'block';
+            } else {
+                alert('Invalid credentials!');
+            }
+        });
+
+        // Handle Profile Setup
+        document.getElementById('profileForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            userProfile.age = document.getElementById('age').value;
+            userProfile.gender = document.getElementById('gender').value;
+            userProfile.height = document.getElementById('height').value;
+            userProfile.weight = document.getElementById('weight').value;
+
+            document.getElementById('profile-setup').style.display = 'none';
+            document.getElementById('main-features').style.display = 'block';
+        });
+
+        // Main Feature Navigation Functions
+        function showWorkoutCustomization() {
+            document.getElementById('main-features').style.display = 'none';
+            document.getElementById('workout-customization').style.display = 'block';
+        }
+
+        function showMealPlanning() {
+            document.getElementById('main-features').style.display = 'none';
+            document.getElementById('meal-planning').style.display = 'block';
+        }
+
+        function showVirtualCoaching() {
+            document.getElementById('main-features').style.display = 'none';
+            document.getElementById('virtual-coaching').style.display = 'block';
+        }
+
+        function showChallenges() {
+            alert("Challenges feature coming soon!");
+        }
+
+        function showAnalytics() {
+            alert("Analytics feature coming soon!");
+        }
+
+        function showMeditation() {
+            alert("Meditation feature coming soon!");
+        }
+
+        function showMarketplace() {
+            alert("Marketplace feature coming soon!");
+        }
+
+        // Back to Main
+        function backToMain() {
+            document.getElementById('meal-planning').style.display = 'none';
+            document.getElementById('workout-customization').style.display = 'none';
+            document.getElementById('virtual-coaching').style.display = 'none';
+            document.getElementById('main-features').style.display = 'block';
+        }
+
+        // Meal Plan Generation
+        function generateMealPlan() {
+            const goal = document.getElementById('mealGoal').value;
+            const restrictions = document.getElementById('dietaryRestrictions').value;
+
+            const plan = Your meal plan for ${goal} with ${restrictions} diet: Eat a balanced combination of proteins, carbs, and fats tailored to your goal.;
+            document.getElementById('mealPlan').textContent = plan;
+        }
+
+        // Workout Plan Generation
+        function generateWorkoutPlan() {
+            const goal = document.getElementById('workoutGoal').value;
+            const level = document.getElementById('workoutLevel').value;
+            const equipment = document.getElementById('workoutEquipment').value;
+
+            const plan = Your workout plan for ${goal} at ${level} level with ${equipment} equipment: Focus on full-body exercises with progressive intensity.;
+            document.getElementById('workoutPlan').textContent = plan;
+        }
+
+        // Virtual Coaching Plan Generation
+        function generatePlan() {
+            const goal = document.getElementById('fitnessGoal').value;
+            const level = document.getElementById('fitnessLevel').value;
+            const equipment = document.getElementById('equipment').value;
+
+            const plan = Your personalized fitness plan for ${goal} at ${level} level with ${equipment} equipment: Follow a structured plan with personalized coaching.;
+            document.getElementById('workoutPlan').textContent = plan;
+        }
+
+        // Complete Workout
+        function completeWorkout() {
+            const feedback = "Good job! You've completed your workout for the day!";
+            document.getElementById('feedback').textContent = feedback;
+        }
+    </script>
+</body>
+</html>
